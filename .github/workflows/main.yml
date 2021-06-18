@@ -1,0 +1,81 @@
+name: Main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  commit-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Commit Lint
+        uses: wagoid/commitlint-github-action@v2
+  code-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: '16'
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-16-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Format
+        run: yarn run format
+      - name: Lint
+        run: yarn run lint
+  complete-coverage-results:
+    needs: test-with-node
+    runs-on: ubuntu-latest
+    steps:
+      - name: Finish coveralls parallel build
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
+  release:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    needs: [commit-lint, code-lint, test-with-node]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: Disable protection temporary
+        uses: actions/github-script@0.9.0
+        with:
+          github-token: '${{ secrets.GASTROBOT_TOKEN}}'
+          script: |
+            await github.repos.removeProtectedBranchAdminEnforcement({
+              ...context.repo,
+              branch: 'main',
+            });
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GASTROBOT_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Restore protection
+        uses: actions/github-script@0.9.0
+        if: always()
+        with:
+          github-token: '${{ secrets.GASTROBOT_TOKEN}}'
+          script: |
+            await github.repos.addProtectedBranchAdminEnforcement({
+              ...context.repo,
+              branch: 'main',
+            });
