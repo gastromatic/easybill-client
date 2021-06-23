@@ -12,4 +12,4 @@ jest.config.ts
 Dockerfile
 tsconfig.build.json
 tsconfig.json
-yarn.lock
+package-lock.json

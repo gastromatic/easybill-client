@@ -1,2 +1,2 @@
-'*.ts': eslint --fix
+'*.ts': eslint
 '*.{ts,json}': prettier --write
