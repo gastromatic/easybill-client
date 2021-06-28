@@ -31,18 +31,9 @@ jobs:
         run: yarn run format
       - name: Lint
         run: yarn run lint
-  complete-coverage-results:
-    needs: test-with-node
-    runs-on: ubuntu-latest
-    steps:
-      - name: Finish coveralls parallel build
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
   release:
     if: "!contains(github.event.commits[0].message, '[skip ci]')"
-    needs: [commit-lint, code-lint, test-with-node]
+    needs: [commit-lint, code-lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

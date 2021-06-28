@@ -10,6 +10,5 @@ test/
 .releaserc.yml
 jest.config.ts
 Dockerfile
-tsconfig.build.json
 tsconfig.json
 package-lock.json
