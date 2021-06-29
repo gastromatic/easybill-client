@@ -1,0 +1,40 @@
+{
+  "extends": ["config:base"],
+  "reviewers": ["co-sic", "kkhanhluu", "dimitriSaplatkin"],
+  "reviewersSampleSize": 1,
+  "dependencyDashboard": true,
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "groupName": "dependencies (non-major)",
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "groupName": "devDependencies",
+      "addLabels": ["devDependencies"],
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true,
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "groupName": "devDependencies (main-workflow)",
+      "addLabels": ["devDependencies"],
+      "matchFiles": ["main.yml"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "groupName": "semantic-release",
+      "addLabels": ["devDependencies", "semantic-release"],
+      "matchPackagePatterns": "semantic-release",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "schedule": ["before 8am on Monday"]
+    }
+  ],
+  "schedule": ["before 8am"]
+}
