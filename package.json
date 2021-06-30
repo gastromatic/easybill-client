@@ -13,7 +13,8 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier **/*.{ts,json} --check",
     "format:fix": "prettier **/*.{ts,json} --write",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "types:generate": "npx openapi-typescript https://api.easybill.de/rest/v1/swagger.json -o src/generated/types.ts"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "@commitlint/config-conventional": "^12.0.1",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
+    "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.29.0",
@@ -45,5 +47,11 @@
     "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.2"
+  },
+  "dependencies": {
+    "@types/node": "^15.12.5",
+    "axios": "^0.21.1",
+    "bottleneck": "^2.19.5",
+    "winston": "^3.3.3"
   }
 }

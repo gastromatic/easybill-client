@@ -1,0 +1,1 @@
+export { catchAsyncAxios } from './catchAsyncAxios';
