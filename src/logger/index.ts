@@ -1,6 +1,6 @@
 import { createLogger, format, transports } from 'winston';
 
-function formatParams(info: any) {
+function formatParams(info: Record<string, unknown>) {
   const { timestamp, level, message, label } = info;
 
   return `${timestamp} [${level}]: invoice-service.${label} ${message}`;
@@ -33,6 +33,10 @@ const logger =
         exceptionHandlers: [new transports.Console()],
       });
 
-export function log(options: { level: 'error' | 'info' | 'warn'; message: string; label: string }) {
+export function log(options: {
+  level: 'error' | 'info' | 'warn';
+  message: string;
+  label: string;
+}): void {
   logger.log(options.level, options.message, { label: options.label });
 }
