@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/gastromatic/easybill-client/compare/v1.0.0...v1.0.1) (2021-07-09)
+
+
+### Bug Fixes
+
+* switch from npm to yarn ([b8421b1](https://github.com/gastromatic/easybill-client/commit/b8421b1a82c314027c2041bc2e02f64cbff840c3))
+
 # 1.0.0 (2021-07-08)
 
 
