@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/gastromatic/easybill-client/compare/v1.0.1...v1.0.2) (2021-07-21)
+
+
+### Bug Fixes
+
+* increase waiting time bottlenek ([fa39ac5](https://github.com/gastromatic/easybill-client/commit/fa39ac5ca0be56b9f29eb14f7297277922750789))
+* increase waiting time bottlenek ([afb250a](https://github.com/gastromatic/easybill-client/commit/afb250ab4ccef3fa2d24b590b3ca73a8280e1340))
+
 ## [1.0.1](https://github.com/gastromatic/easybill-client/compare/v1.0.0...v1.0.1) (2021-07-09)
 
 
