@@ -12,7 +12,7 @@ const limiter = new Bottleneck({
   maxConcurrent: 1,
 });
 
-const maxNumberOfRetries = 6;
+const maxNumberOfRetries = 10;
 
 function handleOnLimiterFailed(
   error: EasybillError,
@@ -26,8 +26,8 @@ function handleOnLimiterFailed(
       message: `Reason: "${error.message}". Retrying job ${jobInfo.options.id}`,
       label: 'requestable',
     });
-    // retry maximal 6 times. The delay between each retry is set to double (starting at 2000ms) with each attempt, but not exceed 30 seconds.
-    return Math.min(1000 * 2 ** (jobInfo.retryCount + 1), 30000);
+    // retry maximal 6 times. The delay between each retry is set to double (starting at 10s) with each attempt, but not exceed 30 seconds.
+    return Math.min(5000 * 2 ** (jobInfo.retryCount + 1), 60000);
   }
   return null;
 }
