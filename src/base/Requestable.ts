@@ -26,7 +26,7 @@ function handleOnLimiterFailed(
       message: `Reason: "${error.message}". Retrying job ${jobInfo.options.id}`,
       label: 'requestable',
     });
-    // retry maximal 6 times. The delay between each retry is set to double (starting at 10s) with each attempt, but not exceed 30 seconds.
+    // retry maximal 6 times. The delay between each retry is set to double (starting at 10s) with each attempt, but not exceed 60 seconds.
     return Math.min(5000 * 2 ** (jobInfo.retryCount + 1), 60000);
   }
   return null;
