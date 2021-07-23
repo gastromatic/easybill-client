@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/gastromatic/easybill-client/compare/v1.0.2...v1.0.3) (2021-07-23)
+
+
+### Bug Fixes
+
+* resolve unhandled rejection promise ([4a6670b](https://github.com/gastromatic/easybill-client/commit/4a6670b2bbd1f67394bb832471e726025e7df0a8))
+
 ## [1.0.2](https://github.com/gastromatic/easybill-client/compare/v1.0.1...v1.0.2) (2021-07-21)
 
 
