@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import Bottleneck from 'bottleneck';
 import { log } from '../logger';
-import { catchAsyncAxios } from '../utils/catchAsyncAxios';
 import { EasybillError } from './EasybillError';
 
 const limiter = new Bottleneck({
@@ -26,7 +25,7 @@ function handleOnLimiterFailed(
       message: `Reason: "${error.message}". Retrying job ${jobInfo.options.id}`,
       label: 'requestable',
     });
-    // retry maximal 6 times. The delay between each retry is set to double (starting at 10s) with each attempt, but not exceed 60 seconds.
+    // retry maximal 10 times. The delay between each retry is set to double (starting at 10s) with each attempt, but not exceed 60 seconds.
     return Math.min(5000 * 2 ** (jobInfo.retryCount + 1), 60000);
   }
   return null;
@@ -59,18 +58,56 @@ export class Requestable {
   }): Promise<T> {
     const { method, url, params, data, headers } = config;
 
-    const promise = catchAsyncAxios<T>(
-      this.axiosInstance.request<T, AxiosResponse<T>>({
-        method,
-        url,
-        data,
-        params,
-        headers,
-        cancelToken: this.axiosCancelTokenSource.token,
-      }),
-    );
+    return limiter.schedule(async () => {
+      try {
+        const res = await this.axiosInstance.request<T, AxiosResponse<T>>({
+          method,
+          url,
+          data,
+          params,
+          headers,
+          cancelToken: this.axiosCancelTokenSource.token,
+        });
+        return res.data;
+      } catch (error) {
+        // The request was made and the server responded with a status code
+        if (error.response) {
+          log({
+            level: 'error',
+            message: JSON.stringify(
+              {
+                data: error.response.data,
+                statusCode: error.response.status,
+                headers: error.response.headers,
+              },
+              null,
+              3,
+            ),
+            label: 'EasybillAPI',
+          });
+        } else if (error.request) {
+          // The request was made but no response is received. Request is an instance of http.ClientRequest
+          log({
+            level: 'error',
+            message: JSON.stringify(
+              {
+                request: error.request,
+              },
+              null,
+              3,
+            ),
+            label: 'EasybillAPI',
+          });
+        }
 
-    return limiter.schedule(() => promise);
+        throw new EasybillError(
+          error.message,
+          error.response?.status,
+          error.response?.statusText,
+          error,
+        );
+      }
+    });
   }
 
   /**
