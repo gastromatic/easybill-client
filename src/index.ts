@@ -13,3 +13,5 @@ export class EasybillClient {
     this.documentAPI = new DocumentAPI(baseURL, apiKey);
   }
 }
+
+export * from './types';
