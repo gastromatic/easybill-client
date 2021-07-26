@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/gastromatic/easybill-client/compare/v1.0.3...v1.1.0) (2021-07-26)
+
+
+### Features
+
+* exporting types ([2e010c0](https://github.com/gastromatic/easybill-client/commit/2e010c0888dad88cdb38e422a37da17bdcd2b7ab))
+
 ## [1.0.3](https://github.com/gastromatic/easybill-client/compare/v1.0.2...v1.0.3) (2021-07-23)
 
 
