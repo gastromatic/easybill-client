@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/gastromatic/easybill-client/compare/v1.1.0...v1.1.1) (2021-09-09)
+
+
+### Bug Fixes
+
+* add correct responseType for pdf download ([c692c7f](https://github.com/gastromatic/easybill-client/commit/c692c7f6117b26f2ec61201d528498b261bcc26d))
+
 # [1.1.0](https://github.com/gastromatic/easybill-client/compare/v1.0.3...v1.1.0) (2021-07-26)
 
 
