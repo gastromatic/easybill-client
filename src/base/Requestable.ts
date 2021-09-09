@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse, ResponseType } from 'axios';
 import Bottleneck from 'bottleneck';
 import { log } from '../logger';
 import { EasybillError } from './EasybillError';
@@ -55,8 +55,9 @@ export class Requestable {
     params?: Record<string, unknown>;
     data?: Record<string, unknown>;
     headers?: Record<string, unknown>;
+    responseType?: ResponseType;
   }): Promise<T> {
-    const { method, url, params, data, headers } = config;
+    const { method, url, params, data, headers, responseType } = config;
 
     return limiter.schedule(async () => {
       try {
@@ -67,9 +68,10 @@ export class Requestable {
           params,
           headers,
           cancelToken: this.axiosCancelTokenSource.token,
+          responseType,
         });
         return res.data;
-      } catch (error) {
+      } catch (error: any) {
         // The request was made and the server responded with a status code
         if (error.response) {
           log({
