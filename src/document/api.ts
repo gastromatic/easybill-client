@@ -84,6 +84,7 @@ export class DocumentAPI extends Requestable {
       headers: {
         accept: 'application/pdf',
       },
+      responseType: 'arraybuffer',
     });
   }
 }
