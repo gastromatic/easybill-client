@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@types/node": "^15.12.5",
-    "axios": "^0.21.1",
+    "axios": "^0.22.0",
     "bottleneck": "^2.19.5",
     "winston": "^3.3.3"
   }
