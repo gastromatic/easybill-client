@@ -1,4 +1,4 @@
-import axios, { AxiosResponse, ResponseType } from 'axios';
+import axios, { AxiosRequestHeaders, AxiosResponse, ResponseType } from 'axios';
 import Bottleneck from 'bottleneck';
 import { log } from '../logger';
 import { EasybillError } from './EasybillError';
@@ -42,11 +42,9 @@ export class Requestable {
 
   constructor(baseURL: string, apiKey: string) {
     this.axiosInstance.defaults.baseURL = baseURL;
-    this.axiosInstance.defaults.headers = {
-      'Content-Type': 'application/json;charset=UTF-8',
-      Authorization: `Bearer ${apiKey}`,
-      'X-Easybill-Escape': true,
-    };
+    this.axiosInstance.defaults.headers.common['Content-type'] = 'application/json;charset=UTF-8';
+    this.axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${apiKey}`;
+    this.axiosInstance.defaults.headers.common['X-Easybill-Escape'] = 'true';
   }
 
   protected request<T>(config: {
@@ -54,7 +52,7 @@ export class Requestable {
     url: string;
     params?: Record<string, unknown>;
     data?: Record<string, unknown>;
-    headers?: Record<string, unknown>;
+    headers?: AxiosRequestHeaders;
     responseType?: ResponseType;
   }): Promise<T> {
     const { method, url, params, data, headers, responseType } = config;
