@@ -1,3 +1,13 @@
+## [1.1.3](https://github.com/gastromatic/easybill-client/compare/v1.1.2...v1.1.3) (2021-11-24)
+
+
+### Bug Fixes
+
+* axios type ([422eb15](https://github.com/gastromatic/easybill-client/commit/422eb15e6c10de687373e3daaaee9b2080ddee03))
+* check api key before returning easybill client instance ([0dc63dc](https://github.com/gastromatic/easybill-client/commit/0dc63dc611180d943632cb88545fe66b5f624780))
+* **deps:** update dependency @types/node to v16 ([c483da2](https://github.com/gastromatic/easybill-client/commit/c483da2dd12287075b37044a152d5dba58f50f7b))
+* **deps:** update dependency axios to ^0.23.0 ([8fbe729](https://github.com/gastromatic/easybill-client/commit/8fbe7290cbe15d96521777a304b1b0d7d17f254b))
+
 ## [1.1.2](https://github.com/gastromatic/easybill-client/compare/v1.1.1...v1.1.2) (2021-09-30)
 
 
