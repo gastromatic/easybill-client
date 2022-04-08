@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/gastromatic/easybill-client/compare/v1.1.4...v1.2.0) (2022-04-08)
+
+
+### Features
+
+* allow one instance per apiKey to exist instead of only one ([475a70e](https://github.com/gastromatic/easybill-client/commit/475a70eba8f402422c74a595ffeae0737582f5d5))
+
 ## [1.1.4](https://github.com/gastromatic/easybill-client/compare/v1.1.3...v1.1.4) (2022-01-24)
 
 
