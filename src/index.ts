@@ -2,7 +2,7 @@ import { CustomerAPI } from './customer/api';
 import { DocumentAPI } from './document/api';
 
 export class EasybillClient {
-  private static instance: EasybillClient;
+  private static instanceMap: Map<string, EasybillClient>;
 
   private apiKey: string;
 
@@ -19,13 +19,12 @@ export class EasybillClient {
   }
 
   public static getInstance(apiKey: string): EasybillClient {
-    if (!EasybillClient.instance) {
-      EasybillClient.instance = new EasybillClient(apiKey);
+    let instance = EasybillClient.instanceMap.get(apiKey);
+    if (!instance) {
+      instance = new EasybillClient(apiKey);
+      EasybillClient.instanceMap.set(apiKey, instance);
     }
-    if (EasybillClient.instance.apiKey !== apiKey) {
-      throw new Error('Easybill client cannot have different api keys');
-    }
-    return EasybillClient.instance;
+    return instance;
   }
 }
 
