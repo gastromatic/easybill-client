@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/gastromatic/easybill-client/compare/v1.2.0...v1.2.1) (2022-04-12)
+
+
+### Bug Fixes
+
+* instantiate new instanceMap on EasybillClient ([62353fd](https://github.com/gastromatic/easybill-client/commit/62353fde1c34db6ef205ac210cd5efb8e9c8016b))
+
 # [1.2.0](https://github.com/gastromatic/easybill-client/compare/v1.1.4...v1.2.0) (2022-04-08)
 
 
