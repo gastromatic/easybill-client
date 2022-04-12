@@ -2,7 +2,7 @@ import { CustomerAPI } from './customer/api';
 import { DocumentAPI } from './document/api';
 
 export class EasybillClient {
-  private static instanceMap: Map<string, EasybillClient>;
+  private static instanceMap: Map<string, EasybillClient> = new Map();
 
   private apiKey: string;
 
