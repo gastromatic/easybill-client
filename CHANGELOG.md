@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/gastromatic/easybill-client/compare/v1.2.1...v1.3.0) (2022-04-27)
+
+
+### Features
+
+* add customer group api ([#93](https://github.com/gastromatic/easybill-client/issues/93)) ([7ee6b60](https://github.com/gastromatic/easybill-client/commit/7ee6b60a959f2ffcb826f6bca57570d6ec07d9d7))
+
 ## [1.2.1](https://github.com/gastromatic/easybill-client/compare/v1.2.0...v1.2.1) (2022-04-12)
 
 
