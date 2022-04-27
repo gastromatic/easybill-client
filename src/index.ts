@@ -1,4 +1,5 @@
 import { CustomerAPI } from './customer/api';
+import { CustomerGroupAPI } from './customerGroup/api';
 import { DocumentAPI } from './document/api';
 
 export class EasybillClient {
@@ -8,6 +9,8 @@ export class EasybillClient {
 
   public readonly customerAPI: CustomerAPI;
 
+  public readonly customerGroupApi: CustomerGroupAPI;
+
   public readonly documentAPI: DocumentAPI;
 
   private constructor(apiKey: string) {
@@ -15,6 +18,7 @@ export class EasybillClient {
 
     this.apiKey = apiKey;
     this.customerAPI = new CustomerAPI(baseURL, apiKey);
+    this.customerGroupApi = new CustomerGroupAPI(baseURL, apiKey);
     this.documentAPI = new DocumentAPI(baseURL, apiKey);
   }
 
