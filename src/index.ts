@@ -9,7 +9,7 @@ export class EasybillClient {
 
   public readonly customerAPI: CustomerAPI;
 
-  public readonly customerGroupApi: CustomerGroupAPI;
+  public readonly customerGroupAPI: CustomerGroupAPI;
 
   public readonly documentAPI: DocumentAPI;
 
@@ -18,7 +18,7 @@ export class EasybillClient {
 
     this.apiKey = apiKey;
     this.customerAPI = new CustomerAPI(baseURL, apiKey);
-    this.customerGroupApi = new CustomerGroupAPI(baseURL, apiKey);
+    this.customerGroupAPI = new CustomerGroupAPI(baseURL, apiKey);
     this.documentAPI = new DocumentAPI(baseURL, apiKey);
   }
 
