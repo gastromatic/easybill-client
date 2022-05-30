@@ -33,20 +33,20 @@
   },
   "homepage": "https://github.com/gastromatic/easybill-client#readme",
   "devDependencies": {
-    "@commitlint/cli": "17.0.0",
+    "@commitlint/cli": "17.0.1",
     "@commitlint/config-conventional": "17.0.0",
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/git": "10.0.1",
     "@types/winston": "2.4.4",
-    "@typescript-eslint/eslint-plugin": "5.25.0",
-    "@typescript-eslint/parser": "5.25.0",
+    "@typescript-eslint/eslint-plugin": "5.26.0",
+    "@typescript-eslint/parser": "5.26.0",
     "eslint": "8.16.0",
     "husky": "8.0.1",
-    "lint-staged": "12.4.1",
+    "lint-staged": "12.4.2",
     "prettier": "2.6.2",
     "rimraf": "3.0.2",
     "ts-node": "10.8.0",
-    "typescript": "4.6.4"
+    "typescript": "4.7.2"
   },
   "dependencies": {
     "@types/node": "^16.0.0",
