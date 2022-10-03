@@ -12,7 +12,7 @@ jobs:
       - name: Commit Lint
         uses: wagoid/commitlint-github-action@v5
       - name: PR Lint
-        uses: amannn/action-semantic-pull-request@v4.5.0
+        uses: amannn/action-semantic-pull-request@v4.6.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   code-lint:
@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v3.5.0
         with:
           node-version: '16'
       - uses: actions/cache@v3
