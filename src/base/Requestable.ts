@@ -1,4 +1,4 @@
-import axios, { AxiosRequestHeaders, AxiosResponse, ResponseType } from 'axios';
+import axios, { AxiosResponse, RawAxiosRequestHeaders, ResponseType } from 'axios';
 import Bottleneck from 'bottleneck';
 import { log } from '../logger';
 import { EasybillError } from './EasybillError';
@@ -52,7 +52,7 @@ export class Requestable {
     url: string;
     params?: Record<string, unknown>;
     data?: Record<string, unknown>;
-    headers?: AxiosRequestHeaders;
+    headers?: RawAxiosRequestHeaders;
     responseType?: ResponseType;
   }): Promise<T> {
     const { method, url, params, data, headers, responseType } = config;
