@@ -1,6 +1,6 @@
 {
   "extends": ["config:base"],
-  "reviewers": ["co-sic", "kkhanhluu", "dimitriSaplatkin"],
+  "reviewers": ["co-sic", "dimitriSaplatkin"],
   "reviewersSampleSize": 1,
   "dependencyDashboard": true,
   "labels": ["dependencies"],
