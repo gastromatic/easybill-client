@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/gastromatic/easybill-client/compare/v1.3.4...v1.3.5) (2023-01-16)
+
+
+### Bug Fixes
+
+* use node 18 for github workflows ([b94f780](https://github.com/gastromatic/easybill-client/commit/b94f780f481583332292da48bba02d2fa467c4db))
+
 ## [1.3.4](https://github.com/gastromatic/easybill-client/compare/v1.3.3...v1.3.4) (2022-11-15)
 
 
