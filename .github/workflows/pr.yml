@@ -22,11 +22,11 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.6.0
         with:
-          node-version: '16'
+          node-version: '18'
       - uses: actions/cache@v3
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-node-16-modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-node-18-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Format
