@@ -1,3 +1,10 @@
+## [1.3.18](https://github.com/gastromatic/easybill-client/compare/v1.3.17...v1.3.18) (2023-07-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency winston to v3.10.0 ([e7684bf](https://github.com/gastromatic/easybill-client/commit/e7684bf513a172c7e6d1685e026e14e15f8f9c5d))
+
 ## [1.3.17](https://github.com/gastromatic/easybill-client/compare/v1.3.16...v1.3.17) (2023-07-03)
 
 
