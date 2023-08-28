@@ -1,4 +1,4 @@
-import axios, { AxiosResponse, RawAxiosRequestHeaders, ResponseType } from 'axios';
+import axios, { AxiosError, AxiosResponse, RawAxiosRequestHeaders, ResponseType } from 'axios';
 import Bottleneck from 'bottleneck';
 import { log } from '../logger';
 import { EasybillError } from './EasybillError';
@@ -58,8 +58,8 @@ export class Requestable {
     const { method, url, params, data, headers, responseType } = config;
 
     return limiter.schedule(async () => {
-      try {
-        const res = await this.axiosInstance.request<T, AxiosResponse<T>>({
+      const res = await this.axiosInstance
+        .request<T, AxiosResponse<T>>({
           method,
           url,
           data,
@@ -67,46 +67,53 @@ export class Requestable {
           headers,
           cancelToken: this.axiosCancelTokenSource.token,
           responseType,
-        });
-        return res.data;
-      } catch (error: any) {
-        // The request was made and the server responded with a status code
-        if (error.response) {
-          log({
-            level: 'error',
-            message: JSON.stringify(
-              {
-                data: error.response.data,
-                statusCode: error.response.status,
-                headers: error.response.headers,
-              },
-              null,
-              3,
-            ),
-            label: 'EasybillAPI',
-          });
-        } else if (error.request) {
-          // The request was made but no response is received. Request is an instance of http.ClientRequest
-          log({
-            level: 'error',
-            message: JSON.stringify(
-              {
-                request: error.request,
-              },
-              null,
-              3,
-            ),
-            label: 'EasybillAPI',
-          });
-        }
+        })
+        .catch((error: AxiosError) => {
+          // The request was made and the server responded with a status code
+          if (error.response) {
+            log({
+              level: 'error',
+              message: JSON.stringify(
+                {
+                  data: error.response.data,
+                  statusCode: error.response.status,
+                  headers: error.response.headers,
+                },
+                null,
+                3,
+              ),
+              label: 'EasybillAPI',
+            });
+            throw new EasybillError(
+              error.message,
+              error.response.status,
+              error.response.statusText,
+              error,
+            );
+          } else if (error.request) {
+            // The request was made but no response is received. Request is an instance of http.ClientRequest
+            log({
+              level: 'error',
+              message: JSON.stringify(
+                {
+                  request: error.request,
+                },
+                null,
+                3,
+              ),
+              label: 'EasybillAPI',
+            });
+            throw new EasybillError(
+              error.message,
+              error.request.status,
+              error.request.statusText,
+              error,
+            );
+          }
 
-        throw new EasybillError(
-          error.message,
-          error.response?.status,
-          error.response?.statusText,
-          error,
-        );
-      }
+          throw new EasybillError(error.message, 500, 'Internal Server Error', error);
+        });
+      return res.data;
     });
   }
 
