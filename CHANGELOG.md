@@ -1,3 +1,10 @@
+## [1.3.30](https://github.com/gastromatic/easybill-client/compare/v1.3.29...v1.3.30) (2023-10-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies (non-major) ([fd04b98](https://github.com/gastromatic/easybill-client/commit/fd04b98cdcfbcf419abde2589f7c594b0efbc2b7))
+
 ## [1.3.29](https://github.com/gastromatic/easybill-client/compare/v1.3.28...v1.3.29) (2023-10-02)
 
 
