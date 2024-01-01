@@ -1,3 +1,10 @@
+## [1.3.41](https://github.com/gastromatic/easybill-client/compare/v1.3.40...v1.3.41) (2024-01-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.6.3 ([02bb890](https://github.com/gastromatic/easybill-client/commit/02bb8906572a3ab94928eaa8088f3712d2a2f457))
+
 ## [1.3.40](https://github.com/gastromatic/easybill-client/compare/v1.3.39...v1.3.40) (2023-12-20)
 
 
