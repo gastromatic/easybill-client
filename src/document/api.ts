@@ -50,10 +50,15 @@ export class DocumentAPI extends Requestable {
     });
   }
 
-  cancelDocument(documentId: number, use_text_from_template = false): Promise<Document> {
+  cancelDocument(
+      documentId: number,
+      config: {
+        use_text_from_template?: boolean;
+      }
+  ): Promise<Document> {
     return this.request<Document>({
       method: 'POST',
-      url: `/documents/${documentId}/cancel?use_text_from_template=${use_text_from_template}`,
+      url: `/documents/${documentId}/cancel?use_text_from_template=${config.use_text_from_template ?? false}`,
     });
   }
 
