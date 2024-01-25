@@ -54,7 +54,7 @@ export class DocumentAPI extends Requestable {
       documentId: number,
       config: {
         use_text_from_template?: boolean;
-      }
+      } = {},
   ): Promise<Document> {
     return this.request<Document>({
       method: 'POST',
