@@ -51,6 +51,6 @@
   "dependencies": {
     "axios": "1.7.2",
     "bottleneck": "2.19.5",
-    "winston": "3.13.0"
+    "winston": "3.13.1"
   }
 }
