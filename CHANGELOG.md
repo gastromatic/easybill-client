@@ -1,3 +1,36 @@
+# [2.0.0](https://github.com/gastromatic/easybill-client/compare/v1.3.41...v2.0.0) (2025-01-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies (non-major) ([42ac152](https://github.com/gastromatic/easybill-client/commit/42ac152ed0179acfe5fffce9228943f762b6cb5a))
+* **deps:** update dependency axios to v1.6.5 ([b802ffa](https://github.com/gastromatic/easybill-client/commit/b802ffadbd7744fdd4f161ddf27321f4e7dca3ff))
+* **deps:** update dependency axios to v1.6.7 ([72150b8](https://github.com/gastromatic/easybill-client/commit/72150b89473732188baf7846c8406094376477af))
+* **deps:** update dependency axios to v1.6.8 ([a724a88](https://github.com/gastromatic/easybill-client/commit/a724a88482e1b03d01d337d05258e4079057102e))
+* **deps:** update dependency axios to v1.7.1 ([4f92f83](https://github.com/gastromatic/easybill-client/commit/4f92f8335ca36385ef8cc79533197e43942ac5e1))
+* **deps:** update dependency axios to v1.7.2 ([21fe334](https://github.com/gastromatic/easybill-client/commit/21fe3342b5ed8e7f4901bb216463e7d922c22b0f))
+* **deps:** update dependency axios to v1.7.3 ([2435836](https://github.com/gastromatic/easybill-client/commit/2435836ab0954b76d06be408afd8dd883260326b))
+* **deps:** update dependency axios to v1.7.5 ([9463182](https://github.com/gastromatic/easybill-client/commit/94631821efb03b7e2a83a20476a85819a57efdd6))
+* **deps:** update dependency axios to v1.7.7 ([67961b2](https://github.com/gastromatic/easybill-client/commit/67961b2bfba0e4e6d7ac35975e84d14985b886bf))
+* **deps:** update dependency axios to v1.7.8 ([#319](https://github.com/gastromatic/easybill-client/issues/319)) ([37b1460](https://github.com/gastromatic/easybill-client/commit/37b146009e1b59d9d2e8475b325bc2b62152b36a))
+* **deps:** update dependency axios to v1.7.9 ([#322](https://github.com/gastromatic/easybill-client/issues/322)) ([fa8c77e](https://github.com/gastromatic/easybill-client/commit/fa8c77e7f0e9693550f85e1862b8ef47be3dac7d))
+* **deps:** update dependency winston to v3.12.0 ([059a1a2](https://github.com/gastromatic/easybill-client/commit/059a1a289fe984c96a7c578bfd6e1a2388bf3203))
+* **deps:** update dependency winston to v3.13.0 ([8efdc21](https://github.com/gastromatic/easybill-client/commit/8efdc215ca69eda93e0d1d0923b45c2709aeb8f1))
+* **deps:** update dependency winston to v3.14.1 ([17e1746](https://github.com/gastromatic/easybill-client/commit/17e1746a190cd0b7c3f606d0884b0301a85f3eb2))
+* **deps:** update dependency winston to v3.15.0 ([5179795](https://github.com/gastromatic/easybill-client/commit/5179795eb8cd8684d01785eb4ae897b8817d54f4))
+* **deps:** update dependency winston to v3.16.0 ([3ea077d](https://github.com/gastromatic/easybill-client/commit/3ea077d9c5f3411e6e294a0fad4135381ba17f81))
+* **deps:** update dependency winston to v3.17.0 ([#317](https://github.com/gastromatic/easybill-client/issues/317)) ([d14f642](https://github.com/gastromatic/easybill-client/commit/d14f64293f9c5ca154a346ae75afd2e8599c921e))
+
+
+### Features
+
+* update api types ([4e3dff9](https://github.com/gastromatic/easybill-client/commit/4e3dff9720fa7bd9873fcc57fd28f001eaf50115))
+
+
+### BREAKING CHANGES
+
+* update api types
+
 ## [1.3.41](https://github.com/gastromatic/easybill-client/compare/v1.3.40...v1.3.41) (2024-01-01)
 
 
