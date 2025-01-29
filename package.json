@@ -11,10 +11,11 @@
     "tsc:check": "tsc --noEmit",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
+    "lint-staged": "lint-staged",
     "format": "prettier **/*.{ts,json} --check",
     "format:fix": "prettier **/*.{ts,json} --write",
-    "prepare": "husky install",
-    "types:generate": "npx openapi-typescript https://api.easybill.de/rest/v1/swagger.json -o src/generated/types.ts"
+    "prepare": "husky",
+    "types:generate": "openapi-typescript https://api.easybill.de/rest/v1/swagger.json -o src/generated/types.ts"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "eslint": "8.57.1",
     "husky": "9.1.7",
     "lint-staged": "15.4.3",
+    "openapi-typescript": "3.4.1",
     "prettier": "3.4.2",
     "rimraf": "5.0.10",
     "ts-node": "10.9.2",
