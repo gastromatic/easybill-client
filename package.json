@@ -45,7 +45,7 @@
     "husky": "9.1.7",
     "lint-staged": "15.5.2",
     "openapi-typescript": "3.4.1",
-    "prettier": "3.7.3",
+    "prettier": "3.7.4",
     "rimraf": "5.0.10",
     "ts-node": "10.9.2",
     "typescript": "5.9.3"
