@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-node@v6.5.0
         with:
           node-version: '22'
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-node-22-modules-${{ hashFiles('**/yarn.lock') }}
