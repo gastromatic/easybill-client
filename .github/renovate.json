@@ -1,40 +1,11 @@
 {
-  "extends": ["config:base"],
-  "reviewers": ["co-sic", "dimitriSaplatkin"],
-  "reviewersSampleSize": 1,
-  "dependencyDashboard": true,
-  "labels": ["dependencies"],
-  "packageRules": [
-    {
-      "groupName": "dependencies (non-major)",
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true,
-      "schedule": ["before 8am on Monday"]
-    },
-    {
-      "groupName": "devDependencies",
-      "addLabels": ["devDependencies"],
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true,
-      "schedule": ["before 8am on Monday"]
-    },
-    {
-      "groupName": "devDependencies (main-workflow)",
-      "addLabels": ["devDependencies"],
-      "matchFiles": ["main.yml"],
-      "matchUpdateTypes": ["major"],
-      "automerge": false,
-      "schedule": ["before 8am on Monday"]
-    },
-    {
-      "groupName": "semantic-release",
-      "addLabels": ["devDependencies", "semantic-release"],
-      "matchPackagePatterns": "semantic-release",
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["major"],
-      "automerge": false,
-      "schedule": ["before 8am on Monday"]
-    }
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>gastromatic/renovate-config"
   ],
-  "schedule": ["before 8am"]
+  "reviewers": [
+    "co-sic",
+    "dimitriSaplatkin"
+  ],
+  "reviewersSampleSize": 1
 }
