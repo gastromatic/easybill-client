@@ -1,6 +1,7 @@
 import { CustomerAPI } from './customer/api';
 import { CustomerGroupAPI } from './customerGroup/api';
 import { DocumentAPI } from './document/api';
+import { EasybillRetry, setRetryListener } from './base/retryListener';
 
 export class EasybillClient {
   private static instanceMap: Map<string, EasybillClient> = new Map();
@@ -22,6 +23,14 @@ export class EasybillClient {
     this.documentAPI = new DocumentAPI(baseURL, apiKey);
   }
 
+  /**
+   * Calls the listener whenever a request is retried after a 429 or 5xx response. The rate limit
+   * and the retries are shared by all clients of the process, so there is one listener.
+   */
+  public static onRetry(listener: ((retry: EasybillRetry) => void) | undefined): void {
+    setRetryListener(listener);
+  }
+
   public static getInstance(apiKey: string): EasybillClient {
     let instance = EasybillClient.instanceMap.get(apiKey);
     if (!instance) {
@@ -33,3 +42,5 @@ export class EasybillClient {
 }
 
 export * from './types';
+export { EasybillError } from './base/EasybillError';
+export type { EasybillRetry } from './base/retryListener';
