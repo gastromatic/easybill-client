@@ -17,12 +17,13 @@ function handleOnLimiterFailed(
   error: EasybillError,
   jobInfo: Bottleneck.EventInfoRetryable,
 ): number | null {
-  const { statusCode } = error;
-  const isTooMuchRequestOrServerError = statusCode === 429 || String(statusCode).startsWith('5');
+  const { statusCode, method, url } = error;
+  const isTooMuchRequestOrServerError =
+    statusCode !== undefined && (statusCode === 429 || (statusCode >= 500 && statusCode < 600));
   if (isTooMuchRequestOrServerError && jobInfo.retryCount < maxNumberOfRetries) {
     // retry maximal 10 times. The delay between each retry is set to double (starting at 10s) with each attempt, but not exceed 60 seconds.
     const delayMs = Math.min(5000 * 2 ** (jobInfo.retryCount + 1), 60000);
-    notifyRetry({ statusCode, attempt: jobInfo.retryCount + 1, delayMs });
+    notifyRetry({ statusCode, attempt: jobInfo.retryCount + 1, delayMs, method, url });
     return delayMs;
   }
   return null;
@@ -74,17 +75,10 @@ export class Requestable {
               error.response.statusText,
               error,
             );
-          } else if (error.request) {
-            // The request was made but no response is received. Request is an instance of http.ClientRequest
-            throw new EasybillError(
-              error.message,
-              error.request.status,
-              error.request.statusText,
-              error,
-            );
           }
-
-          throw new EasybillError(error.message, 500, 'Internal Server Error', error);
+          // No response came back, or the request was never sent (e.g. cancelled). Without a
+          // status code the limiter does not retry it.
+          throw new EasybillError(error.message, undefined, undefined, error);
         });
       return res.data;
     });

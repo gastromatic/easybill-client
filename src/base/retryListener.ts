@@ -5,18 +5,27 @@ export interface EasybillRetry {
   attempt: number;
   /** The delay until the next attempt. */
   delayMs: number;
+  method: string | undefined;
+  /** Origin and path of the request, without the query string. */
+  url: string | undefined;
 }
 
-let retryListener: ((retry: EasybillRetry) => void) | undefined;
+export type RetryListener = (retry: EasybillRetry) => void | Promise<void>;
 
-export function setRetryListener(listener: ((retry: EasybillRetry) => void) | undefined): void {
+let retryListener: RetryListener | undefined;
+
+export function setRetryListener(listener: RetryListener | undefined): void {
   retryListener = listener;
 }
 
+/** A failing listener, sync or async, must not stop the retry or crash the process. */
 export function notifyRetry(retry: EasybillRetry): void {
   try {
-    retryListener?.(retry);
+    const result = retryListener?.(retry);
+    if (result && typeof result.then === 'function') {
+      result.then(undefined, () => undefined);
+    }
   } catch {
-    // A failing listener must not stop the retry.
+    // ignored, see above
   }
 }
