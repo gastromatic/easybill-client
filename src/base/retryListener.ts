@@ -12,20 +12,26 @@ export interface EasybillRetry {
 
 export type RetryListener = (retry: EasybillRetry) => void | Promise<void>;
 
-let retryListener: RetryListener | undefined;
+const retryListeners = new Set<RetryListener>();
 
-export function setRetryListener(listener: RetryListener | undefined): void {
-  retryListener = listener;
+/** Returns a function that removes the listener again. */
+export function addRetryListener(listener: RetryListener): () => void {
+  retryListeners.add(listener);
+  return () => {
+    retryListeners.delete(listener);
+  };
 }
 
 /** A failing listener, sync or async, must not stop the retry or crash the process. */
 export function notifyRetry(retry: EasybillRetry): void {
-  try {
-    const result = retryListener?.(retry);
-    if (result && typeof result.then === 'function') {
-      result.then(undefined, () => undefined);
+  for (const listener of retryListeners) {
+    try {
+      const result = listener(retry);
+      if (result && typeof result.then === 'function') {
+        result.then(undefined, () => undefined);
+      }
+    } catch {
+      // ignored, see above
     }
-  } catch {
-    // ignored, see above
   }
 }
